@@ -1,25 +1,43 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+export function App() {
+    
+    const [images, setImages] = useState([]);
+    
+    useEffect(() => {getApiData()}, []);
+    
+    const getApiData = async () => {
+        const response = await fetch(
+          "http://localhost:3000"
+        ).then((response) => response.json());
+      
+        // update the state
+        setImages(response);
+      };
+    
+
+    return (
+        <div className="App">
+            <h1>S3 Bucket</h1>
+            {images.map((imgs, index)=>{return (
+                <>
+                <div className='container'>
+                    <div className='image_container'>
+                        <img style={{height: "150px"}} alt={imgs.name} src={imgs.url}/>
+                    </div>
+                    <div className='description'>
+                        <p>{imgs.name}</p>
+                        <p>{imgs.mimetype}</p>
+                        <p>{imgs.size}</p>
+                    </div>
+                </div>
+                <hr/>
+                </>
+            )})}
+        </div>
+    );
 }
 
 export default App;

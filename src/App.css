@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  width: 100vh;
+  height: 100vh;
+  margin: 0 auto;
 }
 
 .App-logo {
@@ -35,4 +38,34 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.container{
+  display: flex;
+  flex-flow: nowrap row;
+  justify-content: start;
+  align-items: center;
+  background-color: lightblue;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.description{
+  text-align: left;
+  padding-left: 30px;
+}
+
+.image_container{
+  height: 150px;
+  width: 150px;
+}
+
+.image_container img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+hr{
+  width: 30%;
 }
