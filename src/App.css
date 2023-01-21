@@ -43,7 +43,7 @@
 .container{
   display: flex;
   flex-flow: nowrap row;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   background-color: lightblue;
   border-radius: 12px;
